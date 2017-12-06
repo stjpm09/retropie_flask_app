@@ -1,0 +1,17 @@
+Final Project TODO:
+
+    * You need to create a file called runcommand-onstart.sh in the folder /opt/retropie/configs/all/
+    * This file contains #!/usr/bin/env bash and python3 <filepath>
+    write python code to get the rom name and system, and write to a different file
+    * Once this works, create a MySQL database
+    * Write information to the database instead of the other file
+    figure out how exactly data will be displayed and how complex we want to get involving the -onend script
+    * Grab the information from the database using python code or a display software
+    * Create documentation for everything
+    * Create presentation
+
+API Design Notes:
+* Endpoints:
+    * current_game - TODO
+    * past_games - TODO
+
