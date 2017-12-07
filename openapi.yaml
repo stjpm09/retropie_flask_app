@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: RetroPie Flask Application API
+  description: >-
+    This API is used in conjunction with the RetroPie application. It allows
+    users to acquire information about past and present games being played.
+  version: 0.1.0
+paths:
+  /current:
+    get:
+      summary: >-
+        Returns the name, system, and time started for the current game being
+        played on the RetroPie.
+      description: >-
+        Allows the user to query the metadata of RetroPie relating to the game
+        that they are currently playing by using that game's name as a keyword,
+        given to the endpoint on start of the game itself through a separate
+        script.
+
+        The return type is a JSON array of the current game information
+        represented as a list.
+      parameters:
+        - name: query
+          in: path
+          required: true
+          description: A string of Unicode characters representing the search term.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >-
+            Returns a message to the user indicating that connection was
+            successful.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Reply message
+        '400':
+          description: Used if a connection could not be made.
+  /history:
+    get:
+      summary: >-
+        Returns the name and system of games that have been played on RetroPie
+        at least once.
+      description: >-
+        Allows the user to query the metadata of RetroPie relating to games that
+        have been played since the last time RetroPie was restarted.
+
+        The return type is a JSON array of the current game information
+        represented as a list.
+      parameters:
+        - name: query
+          in: path
+          required: true
+          description: A string of Unicode characters representing the search term.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >-
+            Returns a message to the user indicating that connection was
+            successful.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Reply message
+        '400':
+          description: Used if a connection could not be made.
+  /relatedToCurrent:
+    get:
+      summary: Returns a list of games related to the current game being played.
+      description: >-
+        Allows the user to query the metadata of RetroPie relating to the game
+        being played by using the name of that game as a keyword to search
+        against the IGDB API.
+
+        The return type is a JSON array of the game titles related to the
+        current game represented as a list.
+      parameters:
+        - name: query
+          in: path
+          required: true
+          description: A string of Unicode characters representing the search term.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >-
+            Returns a message to the user indicating that connection was
+            successful.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Reply message
+        '400':
+          description: Used if a connection could not be made.
