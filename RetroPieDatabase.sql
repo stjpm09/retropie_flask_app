@@ -6,21 +6,18 @@ USE RetroPie;
 
 
 CREATE TABLE CurrentGame(
-  game_name         VARCHAR(100) NOT NULL
-)
+  game_name         VARCHAR(100) NOT NULL,
+  system_name       VARCHAR(70) NOT NULL,
+  game_start_time   VARCHAR(20) NOT NULL,
+  PRIMARY KEY (game_name)
+);
 
 
 CREATE TABLE GamesPlayed(
   game_name         VARCHAR(100) NOT NULL,
   system_name       VARCHAR(70) NOT NULL,
-  game_start_time   VARCHAR(20) NOT NULL,
   PRIMARY KEY (game_name)
-)
-
-CREATE TABLE FinishedGameTimes(
-  game_end_time            VARCHAR(20) NOT NULL
-)
-
+);
 
 
 
