@@ -5,6 +5,7 @@ from unittest import TestCase
 
 
 class TestIGBD(TestCase):
+    # the IP address of the tests is for our pi
 
     def test_simple_connect(self):
         url = 'http://10.76.100.35:5000/'

@@ -2,8 +2,11 @@ from flask import Flask
 import json
 import pymysql
 import requests
+import os
 
 app = Flask(__name__)
+
+api_key = os.environ['IGDB_ACCESS_TOKEN']
 
 
 @app.route('/')
@@ -58,7 +61,7 @@ def show_related_games_to_current():
     cursor.execute(sql)
 
     base_url = 'https://api-2445582011268.apicast.io'
-    headers = {'Accept': 'application/json', 'user-key': '9dd6c179b9eb4d88aecf274c2fc2210b'}
+    headers = {'Accept': 'application/json', 'user-key': api_key}
 
     games = []
     for game in cursor:
